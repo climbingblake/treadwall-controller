@@ -1,0 +1,31 @@
+
+.w-full
+  .text-lg.p-4.m-4.pb-0.text-lg.text-center Angle/Speed
+  #angle.text-9xl.p-4.m-4.bg-yellow-500.text-center= @angle
+
+%section.gradient.mx-auto.text-center.pt-6.pb-12{class: "w-1/2"}
+  %h2.w-full.my-2.text-5xl.font-black.leading-tight.text-center.text-white
+
+  .overflow-x-auto.sm:-mx-6.lg:-mx-8
+    %h3.my-4.text-3xl.font-extrabold
+      %button.ajax_link.mx-auto.lg:mx-0.hover:underline.bg-white.text-gray-800.font-bold.rounded.my-6.py-4.px-8.shadow-lg#upurl{href: "/servo/15"}
+        Up
+  .w-full.mb-4
+    .h-1.mx-auto.bg-white.opacity-25.my-0.py-0.rounded-t{:class => "w-1/6"}
+  %h3.my-4.text-3xl.font-extrabold
+
+    %button.ajax_link.mx-auto.lg:mx-0.hover:underline.bg-white.text-gray-800.font-bold.rounded.my-6.py-4.px-8.shadow-lg#downurl{href: "/servo/0"}
+      Down
+%section.gradient.mx-auto.text-center.pt-6.pb-12{class: "w-1/2"}
+  %h2.w-full.my-2.text-5xl.font-black.leading-tight.text-center.text-white
+    <form name="form_main">
+    <div>
+    <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>:<span id="millisecond">000</span>
+    </div>
+
+    <br />
+
+    <button type="button" name="start" class=" mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">start</button>
+    <button type="button" name="pause" class=" mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">pause</button>
+    <button type="button" name="reset" class=" mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">reset</button>
+    </form>

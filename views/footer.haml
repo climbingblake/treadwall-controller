@@ -1,0 +1,55 @@
+/ Footer
+%footer.bg-white
+  .container.mx-auto.mt-8.px-8
+    .w-full.flex.flex-col.md:flex-row.py-6
+      .flex-1
+        %p.uppercase.font-extrabold.text-gray-500.md:mb-6 Preset Angles/Speeds
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/0"} 0
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/40"} 40
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/80"} 80
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/100"} 100
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/120"} 120
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/140"} 140
+
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/servo/180"} 180
+
+  .container.mx-auto.mt-8.px-8
+    .w-full.flex.flex-col.md:flex-row.py-6
+      .flex-1
+        %p.uppercase.font-extrabold.text-gray-500.md:mb-6 Preset Increment Setting
+        = @increment
+
+  .container.mx-auto.mt-8.px-8
+    .w-full.flex.flex-col.md:flex-row.py-6
+      .flex-1
+        %p.uppercase.font-extrabold.text-gray-500.md:mb-6 Programs
+        %a.ajax_link.font-light.p-4.rounded.bg-red-300.hover:bg-red-700.m-4{:href => "/program/0"} Program 0
+:javascript
+  $('.ajax_link').click(function(event){
+
+    event.preventDefault();
+    var url = $(this).attr('href');
+    // $.ajax({
+    //   type: "GET", url: url
+    // });
+    $.getJSON(url, function(raw) {
+      if(raw.success == true){
+        $('#angle').html(raw.angle);
+        var upangle = parseFloat(raw.angle) + #{@increment.to_f};
+        var downangle = parseFloat(raw.angle) - #{@increment.to_f};
+        $('#upurl').attr('href', "/servo/"+upangle );
+        $('#downurl').attr('href', "/servo/"+downangle );
+        console.log(raw.angle);
+        //console.log(upangle);
+        //console.log(downangle);
+      }else{
+        console.log(raw)
+      }
+    });
+  });

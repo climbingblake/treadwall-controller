@@ -1,0 +1,8 @@
+gem "sinatra"
+gem "sinatra-contrib"
+gem "haml"
+gem "sinatra-activerecord"
+gem "sqlite3"
+gem "rake"
+gem "rerun"
+gem "http"
